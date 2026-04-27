@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@variant dark (.dark &);
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  /* Background e color gestiti da Tailwind nel layout.tsx */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Stili per input e select più leggibili */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+textarea,
+select {
+  color: #000000 !important; /* NERO - massima leggibilità */
+  font-weight: 600 !important; /* Font più marcato */
+}
+
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark input[type="date"],
+.dark input[type="url"],
+.dark textarea,
+.dark select {
+  color: #ffffff !important; /* Bianco in dark mode */
+  background-color: #1f2937 !important; /* gray-800 */
+  border-color: #374151 !important; /* gray-700 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important; /* gray-500 - placeholder visibile ma distinto dal testo */
+  opacity: 1 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #9ca3af !important; /* gray-400 in dark mode */
+}
+
+/* Select personalizzata - stile uniforme per tutti i browser */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.5rem !important;
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: #3b82f6 !important; /* blue-500 */
+}
+
+select:focus {
+  outline: none !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Stile specifico per le opzioni */
+select option {
+  color: #000000 !important;
+  background-color: white !important;
+  padding: 0.5rem !important;
+  font-weight: 600 !important;
+}
+
+.dark select option {
+  color: #ffffff !important;
+  background-color: #1f2937 !important; /* gray-800 */
+}
+
+/* ===== MIRADOR VIEWER - Book View Spacing ===== */
+/* Aggiunge spazio tra le pagine in modalità libro */
+#mirador-viewer .mirador-canvas-world > g > image:nth-child(2) {
+  transform: translateX(10px);
+}
+
+/* Spazio tra le due pagine nel book view tramite margine sul canvas */
+#mirador-viewer .mirador-osd-container canvas {
+  margin: 0 4px;
+}

@@ -1,0 +1,518 @@
+﻿{
+    "@context":  "http://iiif.io/api/presentation/3/context.json",
+    "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/manifest.json",
+    "type":  "Manifest",
+    "label":  {
+                  "it":  [
+                             "Catasto - Stato di Sezione di Caiazzo"
+                         ]
+              },
+    "behavior":  [
+                     "paged"
+                 ],
+    "metadata":  [
+                     {
+                         "label":  {
+                                       "it":  [
+                                                  "Identificativo"
+                                              ]
+                                   },
+                         "value":  {
+                                       "it":  [
+                                                  "Ct04"
+                                              ]
+                                   }
+                     },
+                     {
+                         "label":  {
+                                       "it":  [
+                                                  "Categoria"
+                                              ]
+                                   },
+                         "value":  {
+                                       "it":  [
+                                                  "archivi"
+                                              ]
+                                   }
+                     },
+                     {
+                         "label":  {
+                                       "it":  [
+                                                  "Sottocategoria"
+                                              ]
+                                   },
+                         "value":  {
+                                       "it":  [
+                                                  "registri"
+                                              ]
+                                   }
+                     },
+                     {
+                         "label":  {
+                                       "it":  [
+                                                  "Autore"
+                                              ]
+                                   },
+                         "value":  {
+                                       "it":  [
+                                                  "Non specificato"
+                                              ]
+                                   }
+                     },
+                     {
+                         "label":  {
+                                       "it":  [
+                                                  "Licenza"
+                                              ]
+                                   },
+                         "value":  {
+                                       "it":  [
+                                                  "CC BY - Attribuzione"
+                                              ]
+                                   }
+                     }
+                 ],
+    "summary":  {
+                    "it":  [
+                               ""
+                           ]
+                },
+    "requiredStatement":  {
+                              "label":  {
+                                            "it":  [
+                                                       "Attribuzione e Licenza"
+                                                   ]
+                                        },
+                              "value":  {
+                                            "it":  [
+                                                       "CC BY - Attribuzione\n\nPermette qualsiasi utilizzo, anche commerciale, purchÃ© si citi l\u0027autore\n\nMaggiori informazioni: https://creativecommons.org/licenses/by/4.0/"
+                                                   ]
+                                        }
+                          },
+    "rights":  "https://creativecommons.org/licenses/by/4.0/",
+    "thumbnail":  [
+                      {
+                          "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920154997_Caiazzo_catasto_statosezione_0001.jpg",
+                          "type":  "Image",
+                          "format":  "image/jpeg"
+                      }
+                  ],
+    "items":  [
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/0",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 1"
+                                           ]
+                                },
+                      "height":  2829,
+                      "width":  1800,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/0/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/0/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920154997_Caiazzo_catasto_statosezione_0001.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  2829,
+                                                                       "width":  1800
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/0"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/1",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 2"
+                                           ]
+                                },
+                      "height":  5506,
+                      "width":  3421,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/1/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/1/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920175263_Caiazzo_catasto_statosezione_0003.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5506,
+                                                                       "width":  3421
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/1"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/2",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 3"
+                                           ]
+                                },
+                      "height":  5506,
+                      "width":  3421,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/2/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/2/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920191700_Caiazzo_catasto_statosezione_0004.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5506,
+                                                                       "width":  3421
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/2"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/3",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 4"
+                                           ]
+                                },
+                      "height":  5515,
+                      "width":  3411,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/3/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/3/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920214720_Caiazzo_catasto_statosezione_0005.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5515,
+                                                                       "width":  3411
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/3"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/4",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 5"
+                                           ]
+                                },
+                      "height":  5515,
+                      "width":  3470,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/4/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/4/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920233155_Caiazzo_catasto_statosezione_0006.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5515,
+                                                                       "width":  3470
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/4"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/5",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 6"
+                                           ]
+                                },
+                      "height":  5515,
+                      "width":  3412,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/5/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/5/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920250951_Caiazzo_catasto_statosezione_0007.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5515,
+                                                                       "width":  3412
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/5"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/6",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 7"
+                                           ]
+                                },
+                      "height":  5515,
+                      "width":  3469,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/6/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/6/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920266330_Caiazzo_catasto_statosezione_0008.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5515,
+                                                                       "width":  3469
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/6"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/7",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 8"
+                                           ]
+                                },
+                      "height":  5534,
+                      "width":  3460,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/7/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/7/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920281800_Caiazzo_catasto_statosezione_0009.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5534,
+                                                                       "width":  3460
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/7"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/8",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 9"
+                                           ]
+                                },
+                      "height":  5534,
+                      "width":  3460,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/8/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/8/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920305378_Caiazzo_catasto_statosezione_0010.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5534,
+                                                                       "width":  3460
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/8"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/9",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 10"
+                                           ]
+                                },
+                      "height":  5477,
+                      "width":  3412,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/9/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/9/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920325840_Caiazzo_catasto_statosezione_0011.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5477,
+                                                                       "width":  3412
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/9"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/10",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 11"
+                                           ]
+                                },
+                      "height":  5477,
+                      "width":  3470,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/10/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/10/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920346442_Caiazzo_catasto_statosezione_0012.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5477,
+                                                                       "width":  3470
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/10"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/11",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 12"
+                                           ]
+                                },
+                      "height":  5487,
+                      "width":  3363,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/11/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/11/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920359733_Caiazzo_catasto_statosezione_0013.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5487,
+                                                                       "width":  3363
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/11"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  },
+                  {
+                      "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/12",
+                      "type":  "Canvas",
+                      "label":  {
+                                    "it":  [
+                                               "Pagina 13"
+                                           ]
+                                },
+                      "height":  5487,
+                      "width":  3489,
+                      "items":  [
+                                    {
+                                        "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/12/page",
+                                        "type":  "AnnotationPage",
+                                        "items":  [
+                                                      {
+                                                          "id":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/12/annotation",
+                                                          "type":  "Annotation",
+                                                          "motivation":  "painting",
+                                                          "body":  {
+                                                                       "id":  "https://storage.googleapis.com/digiteca-objects/archivi/registri/epoca-contemporanea/2026/02/pubblicato/698e18d1441b9fa7818ceb9f_1770920372776_Caiazzo_catasto_statosezione_0014.jpg",
+                                                                       "type":  "Image",
+                                                                       "format":  "image/jpeg",
+                                                                       "height":  5487,
+                                                                       "width":  3489
+                                                                   },
+                                                          "target":  "http://localhost:3000/api/iiif/698e18d1441b9fa7818ceb9f/canvas/12"
+                                                      }
+                                                  ]
+                                    }
+                                ]
+                  }
+              ]
+}
