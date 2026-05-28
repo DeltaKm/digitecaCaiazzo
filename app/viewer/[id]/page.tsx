@@ -76,6 +76,7 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
   }
 
   const fileType = getFileType(firstImage)
+  const manifestUrl = `/api/iiif/${document.id}/manifest.json`
 
   // Determina l'URL di ritorno in base al ruolo
   const backUrl = isAdmin ? '/admin/search' : '/'
@@ -128,9 +129,9 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
             audioUrl={firstImage.url} 
             documentTitle={document.title}
           />
-        ) : fileType === 'image' && document.manifestUrl ? (
+        ) : fileType === 'image' ? (
           <MiradorViewer 
-            manifestUrl={document.manifestUrl}
+            manifestUrl={manifestUrl}
             documentTitle={document.title}
             documentId={document.id}
             images={document.images}
@@ -143,10 +144,7 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
                 Tipo di file: <strong>{fileType}</strong>
               </p>
               <p className="mt-1 text-gray-600 dark:text-gray-400">
-                {fileType === 'image' ? 
-                  'Il documento non ha un manifest IIIF' : 
-                  'Formato non supportato per la visualizzazione'
-                }
+                Formato non supportato per la visualizzazione
               </p>
             </div>
           </div>

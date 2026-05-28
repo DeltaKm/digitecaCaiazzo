@@ -26,6 +26,11 @@ function getBaseUrl(request: Request): string {
   return 'http://localhost:3000'
 }
 
+function capitalizeFirst(value: string | null | undefined): string {
+  if (!value) return ""
+  return `${value.charAt(0).toUpperCase()}${value.slice(1)}`
+}
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -47,6 +52,13 @@ export async function GET(
       return NextResponse.json({ error: "Documento non trovato" }, { status: 404 })
     }
 
+    const category = await prisma.category.findUnique({
+      where: { categoryId: document.category },
+      select: { name: true },
+    })
+
+    const displayCategoryName = capitalizeFirst(category?.name || document.category)
+
     // Crea il manifest IIIF 3.0
     const manifest: any = {
       "@context": "http://iiif.io/api/presentation/3/context.json",
@@ -63,7 +75,7 @@ export async function GET(
         },
         {
           "label": { "it": ["Categoria"] },
-          "value": { "it": [document.category] }
+          "value": { "it": [displayCategoryName] }
         },
         {
           "label": { "it": ["Sottocategoria"] },
