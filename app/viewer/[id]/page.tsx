@@ -106,7 +106,7 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
       </header>
 
       {/* Viewer */}
-      <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-900">
+      <div className="flex-1 overflow-hidden bg-gray-100 dark:bg-gray-900 pb-20">
         {document.images.length === 0 ? (
           <div className="flex h-full items-center justify-center">
             <div className="text-center">
