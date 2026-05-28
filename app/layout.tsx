@@ -39,10 +39,20 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="fixed bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-4 z-10">
-              <div className="container mx-auto px-4 flex flex-row justify-between items-center">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  <a href="">Città di Caiazzo Digiteca ©</a>
-                </p>
+              <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div className="flex flex-col items-center sm:items-start text-sm text-gray-600 dark:text-gray-400">
+                  <p>
+                    <a href="">Città di Caiazzo Digiteca ©</a>
+                  </p>
+                  <a
+                    href="https://palazzomazziotti.comunedicaiazzo.it/disclaimer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+                  >
+                    Disclaimer
+                  </a>
+                </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Powered by{" "}
                   <a
