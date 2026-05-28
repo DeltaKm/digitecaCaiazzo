@@ -64,6 +64,7 @@ export default function EditDocumentModal({
     subcategory: "",
     type: "documento-testuale",
     status: "pubblicato",
+    visibility: "pubblico",
     identifier: "",
     author: "",
     attribution: "",
@@ -77,16 +78,11 @@ export default function EditDocumentModal({
     dimensions: "",
     conditions: "",
     provenance: "",
-    transcription: "",
-    keywords: "",
-    notes: "",
   });
 
   const [subcategories, setSubcategories] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
-  const [keywords, setKeywords] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
-  const [keywordInput, setKeywordInput] = useState("");
 
   // Carica le categorie dall'API
   useEffect(() => {
@@ -134,6 +130,7 @@ export default function EditDocumentModal({
         subcategory: document.subcategory,
         type: document.type,
         status: document.published ? "pubblicato" : "bozza",
+        visibility: "pubblico",
         identifier: document.identifier || "",
         author: document.author || "",
         attribution: document.attribution || "",
@@ -147,9 +144,6 @@ export default function EditDocumentModal({
         dimensions: document.dimensions || "",
         conditions: document.conditions || "",
         provenance: document.provenance || "",
-        transcription: "",
-        keywords: "",
-        notes: "",
       });
 
       // Imposta le sottocategorie per la categoria corrente
@@ -181,17 +175,6 @@ export default function EditDocumentModal({
 
   const removeTag = (tagToRemove: string) => {
     setTags(tags.filter(tag => tag !== tagToRemove));
-  };
-
-  const addKeyword = () => {
-    if (keywordInput.trim() && !keywords.includes(keywordInput.trim())) {
-      setKeywords([...keywords, keywordInput.trim()]);
-      setKeywordInput("");
-    }
-  };
-
-  const removeKeyword = (keywordToRemove: string) => {
-    setKeywords(keywords.filter(keyword => keyword !== keywordToRemove));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -302,7 +285,7 @@ export default function EditDocumentModal({
                         ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                         : 'border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500'
                     }`}
-                    placeholder="Inserisci il titolo del documento"
+                    placeholder="Inserisci"
                   />
                   {missingFields.includes('title') && (
                     <p className="mt-1 text-sm text-red-600 dark:text-red-400">Il titolo è obbligatorio</p>
@@ -318,7 +301,7 @@ export default function EditDocumentModal({
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={3}
-                    placeholder="Descrizione del documento..."
+                    placeholder="Descrivi"
                   />
                 </div>
 
@@ -372,7 +355,7 @@ export default function EditDocumentModal({
                       <option value="">Seleziona sottocategoria</option>
                       {subcategories.map((subcat, index) => (
                         <option key={`${subcat}-${index}`} value={subcat}>
-                          {subcat}
+                          {subcat.charAt(0).toUpperCase() + subcat.slice(1)}
                         </option>
                       ))}
                     </select>
@@ -381,59 +364,53 @@ export default function EditDocumentModal({
                     )}
                   </div>
                 </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Tipo
-                    </label>
-                    <select
-                      value={formData.type}
-                      onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    >
-                      <option value="">Seleziona tipo</option>
-                      {documentTypes.map((type) => (
-                        <option key={type.id} value={type.typeId}>
-                          {type.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Stato pubblicazione
-                    </label>
-                    <select
-                      value={formData.status}
-                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    >
-                      <option value="pubblicato">Pubblicato</option>
-                      <option value="bozza">Bozza</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Identificativo
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.identifier}
-                      onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Codice identificativo (opzionale)"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
 
-            {/* Metadati Storici */}
+            {/* Tipo di Documento */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Metadati Storici</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tipo di Documento</h3>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Tipologia *
+                </label>
+                <select
+                  value={formData.type}
+                  disabled
+                  className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium cursor-not-allowed"
+                >
+                  {documentTypes.map((type) => (
+                    <option key={type.id} value={type.typeId}>
+                      {type.name}
+                    </option>
+                  ))}
+                </select>
+                <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  Il tipo documento non puo essere modificato dopo l'inserimento.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Identificativo
+                <span className="ml-2 text-xs text-gray-500 dark:text-gray-400">(Opzionale)</span>
+              </label>
+              <input
+                type="text"
+                value={formData.identifier}
+                onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
+                className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                placeholder="Es: ARC-000123"
+              />
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                Se lasciato vuoto, verra mantenuto quello esistente.
+              </p>
+            </div>
+
+            {/* Metadati */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Metadati</h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -445,7 +422,7 @@ export default function EditDocumentModal({
                       value={formData.author}
                       onChange={(e) => setFormData({ ...formData, author: e.target.value })}
                       className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Nome dell'autore"
+                      placeholder="Nome"
                     />
                   </div>
 
@@ -458,7 +435,7 @@ export default function EditDocumentModal({
                       value={formData.attribution}
                       onChange={(e) => setFormData({ ...formData, attribution: e.target.value })}
                       className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Attribuzione dell'opera"
+                      placeholder="Nome"
                     />
                   </div>
 
@@ -468,7 +445,7 @@ export default function EditDocumentModal({
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                       </svg>
-                      Copyright e Diritti d&apos;Uso
+                      Copyright e Diritti d'Uso
                     </h3>
                     
                     <div className="space-y-4">
@@ -528,174 +505,201 @@ export default function EditDocumentModal({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Luogo origine/produzione
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.location}
-                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Luogo di origine o creazione"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Luogo collocazione
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.collocationLocation}
-                      onChange={(e) => setFormData({ ...formData, collocationLocation: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="Luogo attuale di conservazione"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Periodo Storico
-                    </label>
-                    <select
-                      value={formData.period}
-                      onChange={(e) => setFormData({ ...formData, period: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    >
-                      <option value="">Seleziona periodo</option>
-                      {HISTORICAL_PERIODS.map(period => (
-                        <option key={period.value} value={period.value}>
-                          {period.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Data
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.date}
-                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="es. 1520, XVI secolo, 1500-1550"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Materiali
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.materials}
-                      onChange={(e) => setFormData({ ...formData, materials: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="es. Pergamena, inchiostro"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Dimensioni
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.dimensions}
-                      onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                      placeholder="es. 30x21 cm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Condizioni
-                    </label>
-                    <select
-                      value={formData.conditions}
-                      onChange={(e) => setFormData({ ...formData, conditions: e.target.value })}
-                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    >
-                      <option value="">Seleziona condizione</option>
-                      <option value="ottimo">Ottimo</option>
-                      <option value="buono">Buono</option>
-                      <option value="discreto">Discreto</option>
-                      <option value="danneggiato">Danneggiato</option>
-                      <option value="restaurato">Restaurato</option>
-                    </select>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Periodo storico
+                  </label>
+                  <select
+                    value={formData.period}
+                    onChange={(e) => setFormData({ ...formData, period: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  >
+                   <option value="">Seleziona periodo</option>
+                      <option value="preistoria">Preistoria</option>
+                      <option value="età-antica">Età Antica</option>
+                      <option value="medioevo">Medioevo</option>
+                      <option value="età-moderna">Età Moderna</option>
+                      <option value="età-contemporanea">Età Contemporanea</option>
+                      <option value="contemporaneo-1960">Contemporaneo dal 1960</option>
+                  </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Provenienza
+                    Datazione
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="es. 1520, XVI secolo, 1500-1550"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Luogo origine/produzione
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="Luogo"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Luogo collocazione
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.collocationLocation}
+                    onChange={(e) => setFormData({ ...formData, collocationLocation: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="Luogo attuale di conservazione"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Storia e provenienza
                   </label>
                   <textarea
                     value={formData.provenance}
                     onChange={(e) => setFormData({ ...formData, provenance: e.target.value })}
                     className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={2}
-                    placeholder="Storia e provenienza del documento"
+                    placeholder="Storia e provenienza"
                   />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Materiali e Tecniche
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.materials}
+                    onChange={(e) => setFormData({ ...formData, materials: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="Materiali e Tecniche"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Misure
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.dimensions}
+                    onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="es. 30x40 cm"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Stato di conservazione
+                  </label>
+                  <select
+                    value={formData.conditions}
+                    onChange={(e) => setFormData({ ...formData, conditions: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  >
+                    <option value="">Seleziona</option>
+                    <option value="ottimo">Ottimo</option>
+                    <option value="buono">Buono</option>
+                    <option value="discreto">Discreto</option>
+                    <option value="mediocre">Mediocre</option>
+                    <option value="critico">Critico</option>
+                  </select>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Metadati dell'Immagine</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                Questi metadati verranno salvati nell'immagine e saranno ricercabili
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Trascrizione
-                  </label>
-                  <textarea
-                    value={formData.transcription}
-                    onChange={(e) => setFormData({ ...formData, transcription: e.target.value })}
-                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    rows={4}
-                    placeholder="Trascrizione del testo nell'immagine..."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Note / Bibliografia
-                  </label>
-                  <textarea
-                    value={formData.notes}
-                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    rows={3}
-                    placeholder="Note / Bibliografia"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Parole Chiave (Keywords)
-                  </label>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Tag e Stato</h3>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Tag
+                </label>
+                <div className="flex gap-2 mb-2">
                   <input
                     type="text"
-                    value={formData.keywords}
-                    onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
-                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                    placeholder="manoscritto, antico, latino (separate da virgola)"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
+                    className="flex-1 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-gray-900 dark:text-white font-medium placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="Aggiungi tag"
                   />
-                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                    Inserisci parole chiave separate da virgola
-                  </p>
+                  <button
+                    type="button"
+                    onClick={addTag}
+                    className="rounded-md bg-blue-600 dark:bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 dark:hover:bg-blue-600"
+                  >
+                    <Plus className="h-5 w-5" />
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 rounded-full bg-blue-100 dark:bg-blue-900/30 px-3 py-1 text-sm text-blue-800 dark:text-blue-300"
+                    >
+                      {tag}
+                      <button
+                        type="button"
+                        onClick={() => removeTag(tag)}
+                        className="hover:text-blue-600 dark:hover:text-blue-400"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Stato e Visibilità</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Stato
+                    </label>
+                    <select
+                      value={formData.status}
+                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    >
+                      <option value="bozza">Bozza</option>
+                      <option value="in-revisione">In Revisione</option>
+                      <option value="pubblicato">Pubblicato</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Visibilità
+                    </label>
+                    <select
+                      value={formData.visibility}
+                      onChange={(e) => setFormData({ ...formData, visibility: e.target.value })}
+                      className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    >
+                      <option value="pubblico">Pubblico</option>
+                      <option value="riservato">Riservato</option>
+                      <option value="privato">Privato</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
