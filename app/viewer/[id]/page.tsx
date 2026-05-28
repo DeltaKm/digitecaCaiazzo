@@ -88,10 +88,10 @@ export default async function ViewerPage({ params }: { params: Promise<{ id: str
         <div className="flex items-center gap-4">
           <Link
             href={backUrl}
-            className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+            className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
           >
-            <ArrowLeft className="h-5 w-5" />
-            <span className="text-sm font-medium">Torna all'archivio</span>
+            <ArrowLeft className="h-8 w-8" />
+            <span className="text-base font-semibold">Torna all'archivio</span>
           </Link>
           <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
           <div>
