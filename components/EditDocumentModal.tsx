@@ -650,6 +650,56 @@ export default function EditDocumentModal({
               </div>
             </div>
 
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Metadati dell'Immagine</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Questi metadati verranno salvati nell'immagine e saranno ricercabili
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Trascrizione
+                  </label>
+                  <textarea
+                    value={formData.transcription}
+                    onChange={(e) => setFormData({ ...formData, transcription: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    rows={4}
+                    placeholder="Trascrizione del testo nell'immagine..."
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Note / Bibliografia
+                  </label>
+                  <textarea
+                    value={formData.notes}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    rows={3}
+                    placeholder="Note / Bibliografia"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Parole Chiave (Keywords)
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.keywords}
+                    onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
+                    className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-medium placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    placeholder="manoscritto, antico, latino (separate da virgola)"
+                  />
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    Inserisci parole chiave separate da virgola
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {error && (
               <div className="rounded-md bg-red-50 p-4">
                 <p className="text-sm text-red-800 dark:text-red-400">{error}</p>

@@ -40,10 +40,8 @@ export default function RootLayout({
             </main>
             <footer className="fixed bottom-0 left-0 right-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-4 z-10">
               <div className="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-                <div className="flex flex-col items-center sm:items-start text-sm text-gray-600 dark:text-gray-400">
-                  <p>
-                    <a href="">Città di Caiazzo Digiteca ©</a>
-                  </p>
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <p>Città di Caiazzo Digiteca ©</p>
                   <a
                     href="https://palazzomazziotti.comunedicaiazzo.it/disclaimer"
                     target="_blank"
