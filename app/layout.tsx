@@ -50,6 +50,14 @@ export default function RootLayout({
                   >
                     Disclaimer
                   </a>
+                  <a
+                    href="https://palazzomazziotti.comunedicaiazzo.it/privacy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium transition-colors"
+                  >
+                    Privacy
+                  </a>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Powered by{" "}
