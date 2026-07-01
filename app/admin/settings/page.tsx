@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Settings as SettingsIcon, User, Database, Globe, Shield } from "lucide-react"
 import AdminLayout from "@/components/AdminLayout"
 import SettingsClient from "@/components/SettingsClient"
+import { getMaintenanceMode } from "@/lib/site-settings"
 
 export default async function AdminSettingsPage() {
   const session = await auth()
@@ -20,6 +21,8 @@ export default async function AdminSettingsPage() {
   if (user?.role !== 'admin') {
     redirect("/")
   }
+
+  const maintenanceMode = await getMaintenanceMode()
 
   return (
     <AdminLayout>
@@ -71,7 +74,7 @@ export default async function AdminSettingsPage() {
           </div>
 
           {/* Gestione Categorie e Tipi */}
-          <SettingsClient />
+          <SettingsClient initialMaintenanceMode={maintenanceMode} />
 
           {/* Impostazioni Storage */}
           <div className="rounded-lg bg-white dark:bg-gray-800 p-6 shadow">
